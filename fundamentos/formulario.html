@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label {
+            color: rgb(207, 6, 6);
+        }
+    </style>
+    <link href="estilo.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Formularios HTML</h1>
+
+    <h2 style="margin: 50px 0">Registrar nuevo usuario</h2>
+
+    <form>
+
+    <label for="nombre">Nombre:</label>
+    <input name="nombre" type="text" required />
+
+    <br/><br/>
+
+    <label for="apellido">Apellido:</label>
+    <input name="apellido" required />
+
+    <br><br/>
+
+    <label for="edad">Edad:</label>
+    <input name="edad" type="number" max="100" min="16" required />
+
+    <br><br/>
+
+    <label for="correo">Correo:</label>
+    <input name="correo" type="email" required />
+
+    <br/><br>
+
+    <label for="sexo">Sexo:</label>
+
+    <input name="sexo" type="radio" value="M"> M
+    <input name="sexo" type="radio" value="F"> F
+    <input name="sexo" type="radio" value="NA" checked> N/A
+
+    <br/><br>
+
+    <label for="contraseña">Contraseña:</label>
+    <input name="contraseña" type="password" required />
+
+    <br/><br/>
+
+    <button type="submit">Enviar</button>
+
+    <label for="telefono">Telefono:</label>
+    <input name="telefono" type="number" required />
+
+    </form>
+
+    <!--
+    Nombre          texto
+    Apellido        texto
+    Edad            numero
+    Correo          texto formato de correo (alguien@empresa.com)
+    Sexo            Seleccion (M  F N/A)
+    Contraseña      Texto (contraseña)
+    Telefono        numero
+    -->
+</body>
+</html>

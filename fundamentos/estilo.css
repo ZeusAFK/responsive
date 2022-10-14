@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+#caja {
+    border: #f00 4px dotted;
+    width: 200px;
+    height: 200px;
+    background-color: bisque;
+}
+
+#titulo-principal {
+    text-decoration: underline;
+    border: red 1px solid;
+    
+}
+
+.titulo {
+    color: #1a0f6d
+}
+
+p {
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+ol {
+    list-style-type: upper-roman;
+}
+
+a {
+    text-decoration: none;
+    color: black
+}
+
+input {
+    height: 25px;
+    display: block;
+    border: #c3c3c3 1px solid;
+    border-radius: 5px;
+    width: 250px;
+}
+
+form {
+    margin-left: 30px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    height: 30px;
+    background-color: green;
+    color: white;
+    border: none;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        #promo-img {
+            background-image: url('/images/datacenter.jpg');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="container">
+    <div class="card m-3">
+        <div class="row">
+            <div class="col-lg-6 col-12 p-4">
+                <div class="text-center">
+                    <img src="/images/cloud-storage.png" alt="" style="width: 150px;">
+                    <h3 class="m-2">NotesDrive</h1>
+                    <h4 class="m-4">Free notes repository in the cloud</h4>
+                </div>
+        
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <div class="mb-4">
+                            <label class="form-label text-secondary" for="email">Email address</label>
+                            <input name="email" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="mb-4">
+                            <label class="form-label text-secondary" for="password">Password</label>
+                            <input name="password" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="d-grid">
+                    <button class="btn btn-primary btn-block mt-3">Log in</button>
+                </div>
+        
+                <div class="m-4 text-center">
+                    <a href="/forgot-password" class="text-secondary">Forgot password?</a>
+                </div>
+        
+                <div class="d-flex align-items-center justify-content-center">
+                    <p class="m-2 pe-2">Don't have an account?</p>
+                    <button class="btn btn-outline-danger">Create new</button>
+                </div>
+            </div>
+            <div id="promo-img" class="col-lg-6 col-12"></div>
+        </div>
+    </div>
+</body>
+</html>
