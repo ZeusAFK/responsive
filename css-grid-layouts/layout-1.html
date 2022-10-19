@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item {
+            background-color: rgb(90, 90, 90);
+            color: #FAFAFA;
+            font-weight: bold;
+            text-align: center;
+            padding: 1em;
+            border-radius: 5px;
+        }
+
+        .container {
+            display: grid;
+            grid-template: repeat(6, 100px) / repeat(4, 1fr);
+            grid-gap: 8px;
+        }
+
+        /* Header */
+        #header{
+            grid-column: 1 / -1;
+        }
+
+        #panel-c {
+            grid-row: 2 span;
+        }
+
+        #panel-g {
+            grid-row: 3 span;
+        }
+
+        #panel-h {
+            grid-row: 4 span;
+        }
+
+        #footer {
+            grid-column: 1 / -1
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item" id="header">Header</div>
+        <div class="item panel" id="panel-a"> Panel A </div>
+        <div class="item panel" id="panel-b"> Panel B </div>
+        <div class="item panel" id="panel-c"> Panel C </div>
+        <div class="item panel" id="panel-d"> Panel D </div>
+        <div class="item panel" id="panel-e"> Panel F </div>
+        <div class="item panel" id="panel-f"> Panel G </div>
+        <div class="item panel" id="panel-g"> Panel H </div>
+        <div class="item panel" id="panel-h"> Panel I </div>
+        <div class="item panel" id="panel-i"> Panel J </div>
+        <div class="item panel" id="panel-j"> Panel J </div>
+        <div class="item" id="footer">Footer</div>
+    </div>
+</body>
+</html>

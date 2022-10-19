@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .section {
+            color: #FAFAFA;
+            text-align: center;
+            padding: 1em;
+            font-weight: bold;
+            font-size: 1.4em;
+        }
+        #container {
+            height: 100vh;
+            width: 960px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 3fr 0.7fr 2fr 1.3fr 1fr;
+            grid-template-areas: "header header header"
+                                 "hero main main"
+                                 "sidebar main main"
+                                 "sidebar extra extra"
+                                 "images images posts"
+                                 "footer footer footer";
+            grid-gap: 5px;
+        }
+        #header {
+            background-color: #54d4ed;
+            grid-area: header;
+        }
+        #hero {
+            background-color: #d9c9e4;
+            grid-area: hero;
+        }
+        #main {
+            background-color: #f6c633;
+            grid-area: main;
+        }
+        #sidebar {
+            background-color: #a0c164;
+            grid-area: sidebar;
+        }
+        #extra {
+            background-color: #898989;
+            grid-area: extra;
+        }
+        #images {
+            background-color: #2cb776;
+            grid-area: images;
+        }
+        #posts {
+            background-color: #f5ccde;
+            grid-area: posts;
+        }
+        #footer {
+            background-color: #fea501;
+            grid-area: footer;
+        }
+        .description {
+            font-size: 0.8em;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #container {
+                width: 100%;
+                grid-template-columns: 1fr;
+                grid-template-areas: "header"
+                                    "main"
+                                    "hero"
+                                    "sidebar"
+                                    "extra"
+                                    "images"
+                                    "posts"
+                                    "footer";
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="section" id="header">Header</div>
+        <div class="section" id="hero">Hero</div>
+        <div class="section" id="main">
+            <p>Main content</p>
+            <p class="description">Adipisicing elit. Corrupti odit eum, maiores error fugiat nulla. Neque, suscipit exercitationem. Corporis veniam cupiditate ex numquam totam repudiandae possimus explicabo consequatur officia ipsa.</p>
+        </div>
+        <div class="section" id="sidebar">Sidebar</div>
+        <div class="section" id="extra">Extra content</div>
+        <div class="section" id="images">Related Images</div>
+        <div class="section" id="posts">Related Posts</div>
+        <div class="section" id="footer">Footer</div>
+    </div>
+</body>
+</html>
