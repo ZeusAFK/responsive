@@ -1,0 +1,68 @@
+Flexbox
+
+1. Flexbox necesita un Padre y por lo menos un Hijo.
+
+2. El Flex Container tiene 2 ejes.
+	Defecto: Horizontal y Vertical
+
+	flex-direction: row (default)
+	flex-direction: column
+		
+3. Podemos modificar el eje principal con la propiedad flex-direction
+
+	flex-direction: row (default)
+	flex-direction: row-reverse
+	flex-direction: column
+	flex-direction: column-reverse
+	
+4. Podemos permitir el salto de columnas con flex-wrap
+
+	flex-wrap: nowrap (default)
+	flex-wrap: wrap
+	flex-wrap: wrap-reverse
+	
+5. Alineamos elementos en el eje Principal con justify-content
+
+	justify-content: space-between | flex-start | flex-end | center | space-around
+	
+6. Alineamos elementos en el eje Secundario con align-items
+
+	align-items: flex-start | flex-end | center | stretch | baseline
+	
+7. Podemos alinear los elementos hijos de forma individual en el eje secundario con align-self
+
+	align-self: flex-start | flex-end | center | stretch | baseline
+	
+8. Los hijos flexibles ignoran propiedades como float, clear, vertial-align
+
+9. Podemos modificar el tamanio de los hijos con flex-grow, flex-shrink, flex-basis
+
+	flex-grow: 0 (default)
+		Define el tamanio que crecera un hijo, en relacion a sus demas hermanos, cuando hay espacio disponible en el contenedor.
+	
+	flex-shrink: 1 (default)
+		Define el tamanio de reduccion de un hijo en relacion a sus demas hermanos, cuando falte espacio en el contenedor.
+		
+	flex-basis: auto (default)
+		Define el tamanio inicial del hijo.
+		Similar a width y height, unidades, ej: 200px
+		
+		flex-basis: 0, para luego aumentar al mismo tamanio con flex grow: 1
+		
+10. Podemos resumir todo con la propiedad flex
+	
+	flex: flex-grow flex-shrink flex-basis
+	flex: 0 1 100ox
+	
+	flex: flex-grow flex-basis
+	flex: 1 100px
+	
+	flex: flex-grow
+	flex: 1
+	
+11. Podemos reordenar los hijos flexibles con la propiedad order
+
+	order: 1 [-1, 0, 1, 2, ...]
+
+	Orden va de menor a mayor, positivos y negativos
+
