@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,30 +8,36 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <title>Document</title>
     <style>
-        body { margin: 0 }
+        body {
+            margin: 0
+        }
+
         #page {
             display: grid;
             height: 100vh;
             grid-template-rows: 0.8fr 2fr 5fr 0.5fr;
             grid-template-areas: "header"
-                                 "search"
-                                 "results"
-                                 "footer";
+                "search"
+                "results"
+                "footer";
         }
 
-        #header{
+        #header {
             background-color: aqua;
             grid-area: header;
         }
-        #search{
+
+        #search {
             background-color: blue;
             grid-area: search;
         }
+
         #results {
             background-color: brown;
             grid-area: results;
         }
-        #footer{
+
+        #footer {
             background-color: blueviolet;
             grid-area: footer;
         }
@@ -45,19 +52,21 @@
             padding: 0 0.5rem;
         }
 
-        #search .buttons{
+        #search .buttons {
             grid-column: 1 / -1;
             margin: 1rem;
             display: flex;
             justify-content: flex-end;
             align-items: center;
         }
-        #search .buttons button{
+
+        #search .buttons button {
             flex-basis: 150px;
             margin: 0 0.5rem;
         }
     </style>
 </head>
+
 <body>
     <div id="page">
         <div id="header">Header</div>
@@ -84,7 +93,7 @@
                     <input type="text" id="proveedor" class="form-control" />
                 </div>
                 <div class="search_input">
-                    <label for="categoria" class="form-label">Categoria:</label>
+                    <label for="categoria" class="form-label">Categoría:</label>
                     <input type="text" id="categoria" class="form-control" />
                 </div>
                 <div class="search_input">
@@ -102,4 +111,5 @@
         <footer id="footer">Footer</footer>
     </div>
 </body>
+
 </html>

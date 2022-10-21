@@ -33,21 +33,21 @@ Flexbox
 
 	align-self: flex-start | flex-end | center | stretch | baseline
 	
-8. Los hijos flexibles ignoran propiedades como float, clear, vertial-align
+8. Los hijos flexibles ignoran propiedades como float, clear, vertical-align
 
-9. Podemos modificar el tamanio de los hijos con flex-grow, flex-shrink, flex-basis
+9. Podemos modificar el tamaño de los hijos con flex-grow, flex-shrink, flex-basis
 
 	flex-grow: 0 (default)
-		Define el tamanio que crecera un hijo, en relacion a sus demas hermanos, cuando hay espacio disponible en el contenedor.
+		Define el tamaño que crecerá un hijo, en relación a sus demás hermanos, cuando hay espacio disponible en el contenedor.
 	
 	flex-shrink: 1 (default)
-		Define el tamanio de reduccion de un hijo en relacion a sus demas hermanos, cuando falte espacio en el contenedor.
+		Define el tamaño de reducción de un hijo en relación a sus demás hermanos, cuando falte espacio en el contenedor.
 		
 	flex-basis: auto (default)
-		Define el tamanio inicial del hijo.
+		Define el tamaño inicial del hijo.
 		Similar a width y height, unidades, ej: 200px
 		
-		flex-basis: 0, para luego aumentar al mismo tamanio con flex grow: 1
+		flex-basis: 0, para luego aumentar al mismo tamaño con flex grow: 1
 		
 10. Podemos resumir todo con la propiedad flex
 	
