@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="edad">Edad</label>
+    <input type="text" id="edad" name="edad" />
+    <button onclick="Calcular()">Calcular</button>
+    <script>
+        function Calcular(){
+            let edad = document.querySelector('#edad').value;
+            
+            edad = parseInt(edad);
+            // console.log(edad, typeof edad);
+            // Not A Number NaN
+            if (edad == '' || typeof edad !== 'number' || Number.isNaN(edad)) {
+                console.log('Debe ingresar su edad');
+                return;
+            }
+
+            if (edad <= 15 || edad >= 90) {
+                console.log("La edad debe estar entre 15 y 90");
+                return;
+            }
+
+            console.log(edad);
+        }
+    </script>
+</body>
+</html>

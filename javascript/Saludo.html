@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./app.js"></script>
+</head>
+<body>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" class="textoNombre" placeholder="Ingrese el nombre" />
+    <!-- <input type="text" id="nombre2" class="textoNombre2" placeholder="Ingrese el segundo nombre" /> -->
+    <button onclick="Enviar()">Enviar</button>
+    <script>
+        //const diasSemana = 7;
+        //diasSemana = 4; Ej: No se puede asignar valor a una constante ya definida.
+
+        // texto en javascript es considerado cadena o string
+        //var nombre = '';
+        //nombre = 'Fernando';
+        //nombre = "Fernando Zabala";
+
+        //console.log('Hola ' + nombre);
+
+        // numeros en javascript es considerado int, float, decimal, double, currency
+        // int => Integer
+        // var numero1 = 5;
+        // let numero2 = 10;
+        // let numero3 = '2';
+        // var numero4 = 3.141517;
+
+        //console.log(`El resultado de sumar ${numero1} y ${numero2} es ${numero1+numero2}.`);
+
+        /*console.log(numero1 + numero2);
+        console.log(numero2 + numero3);
+        console.log(numero2 + parseInt(numero3));*/
+
+        // function Saludar(nombre){
+        //     let saludo = 'Hola ' + nombre;
+
+        //     return saludo;
+        // }
+
+        //let saludo = Saludar('Luis');        
+
+        //saludo = SaludarV2('Fernando');
+
+        //console.log(saludo);
+
+
+        // let nombre = 'Fernando';
+        // let edad = 30;
+        // let estatura = 170;
+        // let peso = 500;
+        // let IMC = 100;
+
+        //let mensaje = "Hola " + nombre + ", su edad es " + edad + ", su estatura es " + estatura + ", su peso es " + peso + " y su IMC es " + IMC;
+
+        // Interpolacion de strings
+        //mensaje = `Hola ${nombre}, su edad es ${edad}, su estatura es ${estatura}, su peso es ${peso} y su IMC es ${IMC}`;
+
+        //console.log(mensaje);
+
+        const Saludar = (nombre) => `Hola ${nombre}`;
+
+        function Enviar(){
+            let nombre = document.querySelector("#nombre").value;
+            let saludo = Saludar(nombre);
+    
+            console.log(saludo);
+        }
+    </script>
+</body>
+</html>
