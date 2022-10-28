@@ -133,10 +133,11 @@
 
         const GetCurrentValue = () => {
             let span = document.getElementById('screenValue');
-            return parseInt(span.innerText);
+            return parseFloat(span.innerText);
         }
 
         const SetCurretValue = (value) => {
+            value = parseFloat(value.toFixed(2));
             let span = document.getElementById('screenValue');
             span.innerText = value;
         }
@@ -179,6 +180,7 @@
 
             SetOperationDisplay('', '');
             SetCurretValue(result);
+            currentOperator = null;
 
             waitingForNext = true;
         }
@@ -193,7 +195,7 @@
             if (currentValue == 0 || waitingForNext){
                 currentValue = n;
             }else{
-                currentValue = parseInt(`${currentValue}${n}`);
+                currentValue = parseFloat(`${currentValue}${n}`);
             }
 
             SetCurretValue(currentValue);
