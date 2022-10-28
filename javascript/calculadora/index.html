@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #a8bf7e;
+    }
+    .container {
+        display: grid;
+        background-color: #a0d0ea;
+        width: 600px;
+        height: 600px;
+        padding: 1rem;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1.1fr repeat(4, 1fr);
+        /* grid-template-rows: 1.1fr 1fr 1fr 1fr 1fr; */
+        gap: 10px;
+    }
+    .button {
+        background-color: #efefef;
+        color: #333;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        border-bottom: 5px #80a6bc solid;
+    }
+    .button:hover{
+        cursor: pointer;
+        background-color: aqua;
+    }
+    .operator {
+        background-color: #efff93;
+        font-weight: bold;
+    }
+    .clear {
+        background-color: #fd9fa9;
+        font-weight: bold;
+    }
+    #screen {
+        grid-column: span 4;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+    #screenValue {
+        align-self: flex-end;
+        font-size: 3rem;
+    }
+    #operationDisplay {
+        color: rgb(136, 136, 136);
+        align-self: flex-end;
+        font-size: 1.5rem;
+        min-height: 1rem;
+    }
+    #result {
+        font-weight: bold;
+    }
+
+</style>
+
+<body>
+    <div class="container">
+        <div id="screen" class="button">
+            <span id="operationDisplay"></span>
+            <span id="screenValue">0</span>
+        </div>
+        <div class="button" onclick="PressNumber(1)">
+            <span>1</span>
+        </div>
+        <div class="button" onclick="PressNumber(2)">
+            <span>2</span>
+        </div>
+        <div class="button" onclick="PressNumber(3)">
+            <span>3</span>
+        </div>
+        <div class="button operator" onclick="Operation('+')">
+            <span>+</span>
+        </div>
+        <div class="button" onclick="PressNumber(4)">
+            <span>4</span>
+        </div>
+        <div class="button" onclick="PressNumber(5)">
+            <span>5</span>
+        </div>
+        <div class="button" onclick="PressNumber(6)">
+            <span>6</span>
+        </div>
+        <div class="button operator" onclick="Operation('-')">
+            <span>-</span>
+        </div>
+        <div class="button" onclick="PressNumber(7)">
+            <span>7</span>
+        </div>
+        <div class="button" onclick="PressNumber(8)">
+            <span>8</span>
+        </div>
+        <div class="button" onclick="PressNumber(9)">
+            <span>9</span>
+        </div>
+        <div class="button operator" onclick="Operation('*')">
+            <span>*</span>
+        </div>
+        <div id="Clear" class="button clear">
+            <span>C</span>
+        </div>
+        <div class="button" onclick="PressNumber(0)">
+            <span>0</span>
+        </div>
+        <div id="Result" class="button">
+            <span>=</span>
+        </div>
+        <div class="button operator" onclick="Operation('/')">
+            <span>/</span>
+        </div>
+    </div>
+    <script>
+        var waitingForNext = false;
+        var previousValue = 0;
+        var currentOperator = null;
+
+        const GetCurrentValue = () => {
+            let span = document.getElementById('screenValue');
+            return parseInt(span.innerText);
+        }
+
+        const SetCurretValue = (value) => {
+            let span = document.getElementById('screenValue');
+            span.innerText = value;
+        }
+
+        const SetOperationDisplay = (value, operation) => {
+            let span = document.getElementById('operationDisplay');
+            span.innerText = `${value} ${operation}`;
+        }
+
+        const Operation = (operator) => {
+            currentOperator != null && CalculateResult();
+            currentOperator = operator;
+            let currentValue = GetCurrentValue();
+            previousValue = currentValue;
+            SetOperationDisplay(currentValue, operator);
+            SetCurretValue(0);
+            waitingForNext = true;
+        }
+
+        const CalculateResult = () => {
+            let currentValue = GetCurrentValue();
+            let result = 0;
+
+            switch (currentOperator) {
+                case '+': {
+                    result = previousValue + currentValue;
+                } break;
+                case '-': {
+                    result = previousValue - currentValue;
+                } break;
+                case '*': {
+                    result = previousValue * currentValue;
+                } break;
+                case '/': {
+                    result = previousValue / currentValue;
+                } break;
+            }
+
+            console.log('Calculando: ', currentOperator, previousValue, currentValue, result);
+
+            SetOperationDisplay('', '');
+            SetCurretValue(result);
+
+            waitingForNext = true;
+        }
+
+        function PressNumber(n) {
+            console.log('Presionado boton ', n);
+
+            let currentValue = GetCurrentValue();
+
+            console.log('Valor actual: ', currentValue);
+
+            if (currentValue == 0 || waitingForNext){
+                currentValue = n;
+            }else{
+                currentValue = parseInt(`${currentValue}${n}`);
+            }
+
+            SetCurretValue(currentValue);
+            
+            waitingForNext = false;
+        }
+
+        const Clear = () => {
+            waitingForNext = false;
+            previousValue = 0;
+            currentOperator = null;
+            SetCurretValue(0);
+            SetOperationDisplay('', '');
+        }
+
+        const CopyResult = () => {
+            if (!navigator.clipboard) {
+                console.log('Clipboard API is not supported on this browser.');
+                return;
+            }
+
+            let currentValue = GetCurrentValue();
+
+            navigator.clipboard.writeText(currentValue);
+        }
+
+        document.getElementById('Result').addEventListener('click', CalculateResult);
+        document.getElementById('Clear').addEventListener('click', Clear);
+        document.getElementById('screen').addEventListener('click', CopyResult);
+    </script>
+</body>
+
+</html>
