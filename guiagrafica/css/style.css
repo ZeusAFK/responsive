@@ -1,0 +1,116 @@
+/*.item {
+    background-color: aquamarine;
+    border: red 1px solid;
+    padding: 0.5em;
+}*/
+
+.container {
+    display: grid;
+    height: 100vh;
+    grid-gap: 5px;
+    /*grid-template-columns: 1fr 4fr 1fr 1fr;
+    grid-template-rows: 20px 200px 50px minmax(500px, 1fr) 120px 180px 50px;*/
+    grid-template-columns: 0.3fr 1fr 1fr 0.3fr;
+    grid-template-areas: "top-bar top-bar top-bar top-bar"
+                         "header header header  header"
+                         "nav nav nav nav "
+                         ". contenido  aside ."
+                         ". sponsors sponsors ."
+                         "footer footer footer footer"
+                         "copyright copyright copyright copyright";
+}
+/*occupy the entire width*/
+.top-bar {
+   /* grid-column: 1 / -1;*/
+   height: 30px; 
+   font-size: 1.2em;
+   color: #ffffff;
+   grid-area: top-bar;
+   background-color: red;
+    padding: 0.5em;
+}
+
+.header {
+    /*grid-column: 1 / -1;*/
+     background-color:rgb(221 219 123);
+    height: 180px;
+    grid-area: header;
+    padding: 0.5em;
+}
+
+h2{
+    top: 0;
+    left: 0;
+}
+.nombre-empresa{
+    font-size: 2.7em;
+    color: blueviolet;
+}
+
+.nav {
+    /*grid-column: 1 / -1;  */
+    background-color: #333333; 
+    height: 50px;
+    grid-area: nav;
+   
+    
+}
+a{
+   
+    color: #ffffff;
+    font-size: 1em;
+    padding: 5px 12px; 
+    
+}
+.contenido {
+    /*grid-column: 2;*/
+    grid-area: contenido;
+    background-color: #eaeaea;
+} 
+.tit1 {
+    background-color: #eaeaea;
+    font-size: 25px;
+    font-family: 'oswaldbold';
+    color: #000000;
+}
+
+.sep1 {
+    background: #f3123d;
+    height: 4px;
+    width: 85px;
+    margin-bottom: 20px;
+}
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.aside {
+    grid-area: aside;
+}
+
+.sponsors {
+    grid-area: sponsors;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+}
+
+.sponsors img {
+    width: 100%;
+}
+
+footer {
+    /*grid-column: 1 / -1;*/
+    grid-area: footer;
+
+}
+.copyright {
+    /*grid-column: 1 / -1;*/
+    background-color: #333333; 
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.8em;
+    grid-area: copyright;
+}
