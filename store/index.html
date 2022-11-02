@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+</head>
+<body>
+    <input type="text" id="cantidad" value="10">
+    <button id="mostrar">Mostrar</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Precio</th>
+                <th>ID</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: products">
+            <tr>
+                <td data-bind="text: title"></td>
+                <td data-bind="text: price"></td>
+                <td data-bind="text: id"></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var myViewModel = {
+            products: ko.observable()
+        };
+
+        let url = 'https://api.escuelajs.co/api/v1/products';
+
+        fetch(url + '?offset=0&limit=10')
+            .then(response => response.json())
+            .then(products => {
+                myViewModel.products(products);
+            })
+
+        ko.applyBindings(myViewModel);
+
+        document.getElementById('mostrar').addEventListener('click', () => {
+            let cantidad = document.getElementById('cantidad').value;
+
+            fetch(url + `?offset=0&limit=${cantidad}`)
+            .then(response => response.json())
+            .then(products => {
+                myViewModel.products(products);
+            })
+        });
+    </script>
+</body>
+</html>

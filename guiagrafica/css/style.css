@@ -99,6 +99,7 @@ a{
 
 .sponsors img {
     width: 100%;
+    border: #f3123d 10px solid;
 }
 
 footer {

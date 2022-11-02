@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Adivina el numero</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      width: 50%;
+      max-width: 800px;
+      min-width: 480px;
+      margin: 0 auto;
+    }
+
+    .form input[type="number"] {
+      width: 200px;
+    }
+
+    .lastResult {
+      color: white;
+      padding: 3px;
+    }
+
+    .flex {
+      display: flex;
+      justify-content: center;
+    }
+
+    #btnNew {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Adivina el numero</h1>
+
+  <p>Hemos seleccionado un número aleatorio entre 1 y 100. Intenta adivinarlo en 10 turnos o menos. Te diremos si tu
+    numero fue demasiado alto o demasiado bajo.</p>
+
+  <div id="controls" class="form">
+    <label for="basic-url" class="form-label">Ingresa un numero:</label>
+    <div class="input-group mb-3">
+      <input id="number" type="number" min="1" max="100" class="form-control">
+      <button id="btnTry" class="btn btn-primary" type="button">Intentar</button>
+    </div>
+  </div>
+
+  <div class="info">
+    <p class="intentos"></p>
+    <div id="result"></div>
+    <p class="ayuda"></p>
+  </div>
+
+  <div class="flex">
+    <button id="btnNew" class="btn btn-info">Volver a jugar</button>
+  </div>
+
+  
+
+  <script>
+    // 1. Genera un número aleatorio entre 1 y 100.
+    const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min);
+
+    // 2. Registre el número de turno en el que se encuentra el jugador. Comience el 1.
+    var turn = 1;
+    var currentNumber = getRandom(1, 100);
+    var attempts = [];
+
+    console.log(currentNumber);
+
+    // 3. Proporcione al jugador una forma de adivinar cuál es el número.
+
+    const Try = () => {
+      let number = document.getElementById('number').value;
+
+      number = parseInt(number);
+
+      // 4. Una vez que se haya enviado una respuesta, debe registrar en algún lugar para que el usuario pueda ver sus respuestas anteriores.
+      attempts.push(number);
+
+      let alert = document.createElement('div');
+        alert.classList = 'alert alert-success';
+        alert.innerText = `Felicidades!!! El numero es ${number} correcto!`;
+
+        let result = document.getElementById('result');
+        result.innerHTML = '';
+
+      // 5. A continuación, compruebe si es el número correcto.
+      if (number == currentNumber){
+        // 6. Si es correcto:
+        // - Mostrar mensaje de felicitación.
+        // result.appendChild(alert);
+
+        // - Evita que el jugador pueda ingresar más respuestas (esto arruinaría el juego).
+        document.getElementById('controls').style.display = 'none';
+
+        // Mostrar boton reiniciar juego
+        document.getElementById('btnNew').style.display = 'block';
+      }else{
+        // 7. Si está mal y al jugador le quedan turnos:
+        if (turn < 10) {
+          // - Dígale al jugador que está equivocado y si su suposición fue demasiado alta o demasiado baja.
+          alert.classList = 'alert alert-warning';
+          alert.innerText = `Numero incorrecto, tu numero es demasiado ${number > currentNumber ? 'alto' : 'bajo'}, le quedan ${10 - turn} intentos.`;
+        }else{
+          // 8. Si está mal y al jugador no le quedan turnos:
+          // - Dile al jugador que se acabó el juego.
+          alert.classList = 'alert alert-danger';
+          alert.innerText = 'Ya no te quedan intentos, se acabo el juego :(';
+
+          // - Evita que el jugador pueda ingresar más conjeturas (esto arruinaría el juego).
+          document.getElementById('controls').style.display = 'none';
+
+          // - Control de pantalla que permite al jugador reiniciar el juego.
+          document.getElementById('btnNew').style.display = 'block';
+        }
+
+        // - Permitirles ingresar otra conjetura.
+        // - Incrementa el número de turno en 1.
+        turn++;
+      }
+
+      // Siempre mostramos la alerta independientemente del resultado del juego
+      result.appendChild(alert);
+    }
+
+    // - Control de pantalla que permite al jugador reiniciar el juego.
+    const newGame = () => {
+      // Volvemos a mostrar controles
+      document.getElementById('controls').style.display = 'block';
+      // Establecemos un nuevo numero aleatorio
+      currentNumber = getRandom(1, 100);
+      // Restablecemos los intentos
+      turn = 1;
+      // Borramos el historial de intentos
+      attempts = [];
+      // Ocultamos boton de nuevo juego
+      document.getElementById('btnNew').style.display = 'none';
+      // Limpiar mensaje de resultado anterior
+      document.getElementById('result').innerHTML = '';
+
+      console.log(currentNumber);
+    }
+
+    document.getElementById('btnTry').addEventListener('click', Try);
+    document.getElementById('btnNew').addEventListener('click', newGame);
+
+    // 9. Una vez que el juego se reinicie, asegúrese de que la lógica del juego y la interfaz de usuario se hayan reiniciado por completo, luego vuelva al paso 1.
+  </script>
+</body>
+
+</html>
