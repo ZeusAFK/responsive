@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/solid.js" integrity="sha384-/BxOvRagtVDn9dJ+JGCtcofNXgQO/CCCVKdMfL115s3gOgQxWaX/tSq5V8dRgsbc" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/fontawesome.js" integrity="sha384-dPBGbj4Uoy1OOpM4+aRGfAOc0W37JkROT+3uynUgTHZCHZNMHfGXsmmvYTffZjYO" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .content_width {
+            width: 700px;
+        }
+        #top_options_container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #top_options_container .phone_number {
+            padding-right: 1rem;
+            border-right: 1px #FFF solid;
+            height: 36px;
+            display: flex;
+            align-items: center;
+        }
+        #top_options_container ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-start;
+        }
+        #top_options_container ul li {
+            margin: 0 1rem;
+        }
+        #top_options_container ul li a {
+            color: #FAFAFA;
+            text-decoration: none;
+        }
+        header {
+            width: 100%;
+            color: #FAFAFA;
+        }
+        header .header_black {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            height: 36px;
+        }
+        header .header_blue {
+            background-color: #195087;
+        }
+        #main_container{
+            display: grid;
+            grid-template-areas: "header"
+                                 "categories_slider"
+                                 "recommended_products"
+                                 "deals"
+                                 "featured_brand"
+                                 "footer";
+        }
+        .header_blue .options_container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        header {
+            grid-area: header;
+        }
+        #categories_slider {
+            grid-area: categories_slider;
+        }
+        #recommended_products {
+            grid-area: recommended_products;
+        }
+        #deals {
+            grid-area: deals;
+        }
+        #featured_brand {
+            grid-area: featured_brand;
+        }
+        footer {
+            grid-area: footer;
+        }
+        #categories_slider {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 1rem;
+            text-align: center;
+            color: #195087;
+            font-weight: bold;
+        }
+        #categories_slider .category img {
+            border-radius: 50%;
+            border: 3px #ffd60f solid;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            object-position: center;
+        }
+        #categories_slider a {
+            text-decoration: none;
+        }
+        #recommended_products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+        #recommended_products .product {
+            margin: 1rem 0;
+        }
+        #recommended_products .product img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: center;
+        }
+        #recommended_products .product .title {
+            padding: 0 0.5rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+        }
+        #recommended_products .product .price {
+            padding: 0 0.5rem;
+            font-weight: bold;
+        }
+        #recommended_products .product .buy {
+            background-color: #195087;
+            color: #FAFAFA;
+            text-align: center;
+            font-size: 1.3rem;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+        #recommended_products .product .buy:hover {
+            background-color: #FAFAFA;
+            color: #195087;
+        }
+        #deals {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-gap: 5px;
+        }
+        #deals img {
+            width: 100%;
+        }
+        #deals img:nth-of-type(1) {
+            grid-column: span 2;
+        }
+        #deals img:nth-of-type(2) {
+            grid-column: span 2;
+        }
+        #deals img:nth-of-type(3) {
+            grid-column: span 2;
+        }
+        #featured_brand{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-gap: 5px;
+        }
+        #featured_brand img {
+            width: 100%;
+        }
+        #featured_brand img:nth-of-type(1) {
+            grid-column: span 4;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header_black">
+            <div id="top_options_container" class="content_width">
+                <div class="phone_number">
+                    <span><i class="fa fa-phone"></i> Venta Telefónica: (3) 343-1700</span>
+                </div>
+                <ul>
+                    <li><a href="">MultiCuotas</a></li>
+                    <li><a href=""><i class="fa fa-sign-in-alt"></i> Ingresar</a></li>
+                    <li><a href=""><i class="fa fa-map-marker-alt"></i> Como comprar</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="header_blue">
+            <div class="options_container content_width">123</div>
+        </div>
+    </header>
+    <div id="main_container" class="content_width">
+        <div id="banner slider">
+            <img src="https://via.placeholder.com/700x250.png?text=Banner Slider" />
+        </div>
+        <div id="categories_slider" data-bind="foreach: categories">
+            <a data-bind="attr: { href: 'category/' + id }">
+                <div class="category">
+                    <img data-bind="attr:{src: image}" />
+                    <div data-bind="text: name"></div>
+                </div>
+            </a>
+        </div>
+        <div id="recommended_products" data-bind="foreach: recommendedProducts">
+            <div class="product">
+                <img data-bind="attr:{src: images[0]}" />
+                <div class="title" data-bind="text: title"></div>
+                <div class="price" data-bind="text: 'Bs. ' + price"></div>
+                <div class="buy" data-bind="click: AddProduct(id)">
+                    <i class="fa fa-shopping-cart"></i> Comprar
+                </div>
+            </div>
+        </div>
+        <div id="deals" class="content_width">
+            <img src="/store/images/deal-1.webp" alt="" />
+            <img src="/store/images/deal-2.webp" alt="" />
+            <img src="/store/images/deal-3.webp" alt="" />
+            <img src="/store/images/deal-4.webp" alt="" />
+            <img src="/store/images/deal-5.webp" alt="" />
+        </div>
+        <div id="featured_brand" class="content_width">
+            <img src="/store/images/brand-1.webp" alt="" />
+            <img src="/store/images/brand-2.webp" alt="" />
+            <img src="/store/images/brand-3.webp" alt="" />
+            <img src="/store/images/brand-4.webp" alt="" />
+            <img src="/store/images/brand-5.webp" alt="" />
+        </div>
+        <footer>pie de pagina</footer>
+    </divid>
+    <script>
+        const api = 'https://api.escuelajs.co/api/v1';
+
+        const storeModel = function() {
+            let self = this;
+            self.categories = ko.observable();
+            self.recommendedProducts = ko.observable();
+
+            axios.get(`${api}/categories`)
+                .then(response => self.categories(response.data));
+                
+            axios.get(`${api}/products?offset=0&limit=40`)
+            .then(response => self.recommendedProducts(response.data));
+
+            self.AddProduct = (product) => {
+                console.log(product);
+            }
+        }
+
+        ko.applyBindings(storeModel);
+    </script>
+</body>
+</html>

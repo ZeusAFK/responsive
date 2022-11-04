@@ -58,8 +58,6 @@
     <button id="btnNew" class="btn btn-info">Volver a jugar</button>
   </div>
 
-  
-
   <script>
     // 1. Genera un número aleatorio entre 1 y 100.
     const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min);
@@ -82,14 +80,14 @@
       attempts.push(number);
 
       let alert = document.createElement('div');
-        alert.classList = 'alert alert-success';
-        alert.innerText = `Felicidades!!! El numero es ${number} correcto!`;
+      alert.classList = 'alert alert-success';
+      alert.innerText = `Felicidades!!! El numero es ${number} correcto!`;
 
-        let result = document.getElementById('result');
-        result.innerHTML = '';
+      let result = document.getElementById('result');
+      result.innerHTML = '';
 
       // 5. A continuación, compruebe si es el número correcto.
-      if (number == currentNumber){
+      if (number == currentNumber) {
         // 6. Si es correcto:
         // - Mostrar mensaje de felicitación.
         // result.appendChild(alert);
@@ -99,13 +97,13 @@
 
         // Mostrar boton reiniciar juego
         document.getElementById('btnNew').style.display = 'block';
-      }else{
+      } else {
         // 7. Si está mal y al jugador le quedan turnos:
         if (turn < 10) {
           // - Dígale al jugador que está equivocado y si su suposición fue demasiado alta o demasiado baja.
           alert.classList = 'alert alert-warning';
           alert.innerText = `Numero incorrecto, tu numero es demasiado ${number > currentNumber ? 'alto' : 'bajo'}, le quedan ${10 - turn} intentos.`;
-        }else{
+        } else {
           // 8. Si está mal y al jugador no le quedan turnos:
           // - Dile al jugador que se acabó el juego.
           alert.classList = 'alert alert-danger';
