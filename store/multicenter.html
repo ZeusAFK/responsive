@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/solid.js" integrity="sha384-/BxOvRagtVDn9dJ+JGCtcofNXgQO/CCCVKdMfL115s3gOgQxWaX/tSq5V8dRgsbc" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/fontawesome.js" integrity="sha384-dPBGbj4Uoy1OOpM4+aRGfAOc0W37JkROT+3uynUgTHZCHZNMHfGXsmmvYTffZjYO" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/solid.js"
+        integrity="sha384-/BxOvRagtVDn9dJ+JGCtcofNXgQO/CCCVKdMfL115s3gOgQxWaX/tSq5V8dRgsbc"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/fontawesome.js"
+        integrity="sha384-dPBGbj4Uoy1OOpM4+aRGfAOc0W37JkROT+3uynUgTHZCHZNMHfGXsmmvYTffZjYO"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <style>
         body {
             margin: 0;
@@ -17,14 +28,22 @@
             flex-direction: column;
             align-items: center;
         }
-        .content_width {
-            width: 700px;
+
+        .swiper {
+            width: 1200px;
+            height: 300px;
         }
+
+        .content_width {
+            width: 1200px;
+        }
+
         #top_options_container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         #top_options_container .phone_number {
             padding-right: 1rem;
             border-right: 1px #FFF solid;
@@ -32,63 +51,84 @@
             display: flex;
             align-items: center;
         }
+
         #top_options_container ul {
             list-style: none;
             display: flex;
             justify-content: flex-start;
         }
+
         #top_options_container ul li {
             margin: 0 1rem;
         }
+
         #top_options_container ul li a {
             color: #FAFAFA;
             text-decoration: none;
         }
+
         header {
             width: 100%;
             color: #FAFAFA;
         }
+
         header .header_black {
             background-color: #000;
             display: flex;
             justify-content: center;
             height: 36px;
         }
+
         header .header_blue {
             background-color: #195087;
+            height: 70px;
         }
-        #main_container{
+
+        #main_container {
             display: grid;
             grid-template-areas: "header"
-                                 "categories_slider"
-                                 "recommended_products"
-                                 "deals"
-                                 "featured_brand"
-                                 "footer";
+                "categories_slider"
+                "recommended_products"
+                "deals"
+                "featured_brand"
+                "footer";
         }
+
+        .header_blue {
+            display: flex;
+            justify-content: center;
+        }
+
         .header_blue .options_container {
             display: flex;
             justify-content: space-around;
             align-items: center;
         }
+
         header {
             grid-area: header;
         }
+
         #categories_slider {
             grid-area: categories_slider;
         }
+
         #recommended_products {
             grid-area: recommended_products;
         }
+
         #deals {
             grid-area: deals;
         }
+
         #featured_brand {
             grid-area: featured_brand;
         }
+
         footer {
             grid-area: footer;
         }
+
         #categories_slider {
             display: flex;
             justify-content: space-evenly;
@@ -97,6 +137,7 @@
             color: #195087;
             font-weight: bold;
         }
+
         #categories_slider .category img {
             border-radius: 50%;
             border: 3px #ffd60f solid;
@@ -105,22 +146,27 @@
             object-fit: cover;
             object-position: center;
         }
+
         #categories_slider a {
             text-decoration: none;
         }
+
         #recommended_products {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         }
+
         #recommended_products .product {
             margin: 1rem 0;
         }
+
         #recommended_products .product img {
             width: 100%;
             height: 250px;
             object-fit: cover;
             object-position: center;
         }
+
         #recommended_products .product .title {
             padding: 0 0.5rem;
             text-overflow: ellipsis;
@@ -128,10 +174,12 @@
             white-space: nowrap;
             width: 100%;
         }
+
         #recommended_products .product .price {
             padding: 0 0.5rem;
             font-weight: bold;
         }
+
         #recommended_products .product .buy {
             background-color: #195087;
             color: #FAFAFA;
@@ -140,42 +188,113 @@
             padding: 0.5rem;
             cursor: pointer;
         }
+
         #recommended_products .product .buy:hover {
             background-color: #FAFAFA;
             color: #195087;
         }
+
         #deals {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: repeat(2, 1fr);
             grid-gap: 5px;
         }
+
         #deals img {
             width: 100%;
         }
+
         #deals img:nth-of-type(1) {
             grid-column: span 2;
         }
+
         #deals img:nth-of-type(2) {
             grid-column: span 2;
         }
+
         #deals img:nth-of-type(3) {
             grid-column: span 2;
         }
-        #featured_brand{
+
+        #featured_brand {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: repeat(2, 1fr);
             grid-gap: 5px;
         }
+
         #featured_brand img {
             width: 100%;
         }
+
         #featured_brand img:nth-of-type(1) {
             grid-column: span 4;
         }
+
+        #button-search {
+            background-color: #FAFAFA;
+        }
+
+        .dropdown-toggle {
+            z-index: 0 !important;
+        }
+
+        .btn-xs {
+            padding: .25rem .4rem;
+            font-size: .875rem;
+            line-height: .5;
+            border-radius: .2rem;
+        }
+        .cart_item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem;
+        }
+        .cart_item img {
+            width: 50px;
+            height: 50px;
+        }
+        .cart_item button {
+            width: 28px;
+            height: 25px;
+        }
+        .cart_item p {
+            margin: 1rem;
+        }
+        .dropdown-menu {
+            transform: translate(0, 40px) !important;
+            width: 300px !important;
+        }
+        .cart_products {
+            padding: 0;
+            margin: 0;
+        }
+        .cart_total_container {
+            display: flex;
+            justify-content: space-evenly;
+            font-weight: bold;
+            background-color: #f2f2f2;
+            padding: 0.7rem 0;
+        }
+
+        .view_cart {
+            background-color: #195087;
+            color: #FAFAFA;
+            text-align: center;
+            font-size: 1.3rem;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .view_cart:hover {
+            background-color: #FAFAFA;
+            color: #195087;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <div class="header_black">
@@ -191,12 +310,78 @@
             </div>
         </div>
         <div class="header_blue">
-            <div class="options_container content_width">123</div>
+            <div class="options_container content_width">
+                <div class="menu_container">
+                    <i class="fa fa-bars"></i> Men&uacute;
+                </div>
+                <div class="main_logo_container">
+                    <img src="https://www.multicenter.com.bo/arquivos/Multicenter_Mails_logo_3.png?v=637551297939700000"
+                        alt="logo" />
+                </div>
+                <div class="search_container">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar productos...">
+                        <button class="btn btn-outline-primary" type="button" id="button-search">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="cart_container">
+                    <div class="input-group">
+                        <button type="button" class="btn btn-primary position-relative">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                        </button>
+                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">MI CARRITO</button>
+                        <ul class="dropdown-menu" style="padding-bottom: 0">
+                            <!-- ko if: cart().length == 0 -->
+                            <li>
+                                <h4 class="text-center">Su carrito esta vacio</h4>
+                            </li>
+                            <!-- /ko -->
+                            <!-- ko if: cart().length > 0 -->
+                            <li>
+                                <ul class="cart_products" data-bind="foreach: cart">
+                                    <div class="cart_item">
+                                        <img data-bind="attr: { src: getProduct($data).images[0] }" />
+                                        <p data-bind="text: getProduct($data).title"></p>
+                                        <button class="btn btn-xs btn-danger" data-bind="click: removeFromCart.bind($data, $data)"><i
+                                                class="fa fa-trash"></i></button>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="cart_total_container">
+                                    <span>TOTAL</span>
+                                    <span data-bind="text: 'Bs. ' + cartTotal()"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="view_cart">
+                                    <i class="fa fa-shopping-cart"></i> VER CARRITO
+                                </div>
+                            </li>
+                            <!-- /ko -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
     <div id="main_container" class="content_width">
         <div id="banner slider">
-            <img src="https://via.placeholder.com/700x250.png?text=Banner Slider" />
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="/store/images/slider-1.webp" alt="slide-1" /></div>
+                    <div class="swiper-slide"><img src="/store/images/slider-2.webp" alt="slide-2" /></div>
+                    <div class="swiper-slide"><img src="/store/images/slider-3.webp" alt="slide-3" /></div>
+                    <div class="swiper-slide"><img src="/store/images/slider-4.webp" alt="slide-4" /></div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
         </div>
         <div id="categories_slider" data-bind="foreach: categories">
             <a data-bind="attr: { href: 'category/' + id }">
@@ -206,12 +391,13 @@
                 </div>
             </a>
         </div>
-        <div id="recommended_products" data-bind="foreach: recommendedProducts">
+        <div id="recommended_products" data-bind="foreach: products">
             <div class="product">
                 <img data-bind="attr:{src: images[0]}" />
                 <div class="title" data-bind="text: title"></div>
                 <div class="price" data-bind="text: 'Bs. ' + price"></div>
-                <div class="buy" data-bind="click: AddProduct(id)">
+                <div class="buy" data-bind="click: AddProduct.bind($data, id)">
+                    <!-- <div class="buy" data-bind="click: AddProduct"> -->
                     <i class="fa fa-shopping-cart"></i> Comprar
                 </div>
             </div>
@@ -231,27 +417,52 @@
             <img src="/store/images/brand-5.webp" alt="" />
         </div>
         <footer>pie de pagina</footer>
-    </divid>
-    <script>
-        const api = 'https://api.escuelajs.co/api/v1';
+        </divid>
+        <script>
+            const api = 'https://api.escuelajs.co/api/v1';
 
-        const storeModel = function() {
-            let self = this;
-            self.categories = ko.observable();
-            self.recommendedProducts = ko.observable();
+            const storeModel = function () {
+                let self = this;
 
-            axios.get(`${api}/categories`)
-                .then(response => self.categories(response.data));
-                
-            axios.get(`${api}/products?offset=0&limit=40`)
-            .then(response => self.recommendedProducts(response.data));
+                self.categories = ko.observable();
+                self.products = ko.observableArray([]);
+                self.cart = ko.observableArray([]);
+                self.cartTotal = ko.computed(() => {
+                    const total = self.cart().reduce((acc, item) => acc + self.getProduct(item).price, 0);
+                    return total;
+                });
 
-            self.AddProduct = (product) => {
-                console.log(product);
+                axios.get(`${api}/categories`)
+                    .then(response => self.categories(response.data));
+
+                axios.get(`${api}/products?offset=0&limit=40`)
+                    .then(response => self.products(response.data));
+
+                self.AddProduct = (product) => {
+                    const cartItem = self.cart().find(item => item == product);
+
+                    cartItem == null && self.cart.push(product);
+                }
+
+                self.getProduct = (id) => {
+                    return self.products().find(product => product.id == id);
+                }
+
+                self.removeFromCart = (product) => {
+                    const newCart = self.cart().filter(item => item != product);
+                    self.cart(newCart);
+                }
             }
-        }
 
-        ko.applyBindings(storeModel);
-    </script>
+            ko.applyBindings(storeModel);
+
+            const swiper = new Swiper('.swiper', {
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        </script>
 </body>
+
 </html>
