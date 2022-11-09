@@ -331,10 +331,11 @@
                         <button type="button" class="btn btn-primary position-relative">
                             <i class="fa fa-shopping-cart"></i>
                             <span
-                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                    data-bind="text: cart().length"></span>
                         </button>
                         <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">MI CARRITO</button>
+                            aria-expanded="false" data-bs-auto-close="outside">MI CARRITO</button>
                         <ul class="dropdown-menu" style="padding-bottom: 0">
                             <!-- ko if: cart().length == 0 -->
                             <li>
